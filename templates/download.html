@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Guacamole User Mapper{% endblock %}
+
+{%block content %}
+
+<div class = "row">
+    <div class="col">
+        <p>Thank you for using UserMapper. Your user-mapping.xml file is ready to download. You may check the file preview below to see if everything is correct. If needed, you may generate a new file from another, or updated, configuration file.</p>
+    </div>
+</div>
+
+<div class = "row">
+    <div class="col">
+        <a href="{{ download_url }}" class="btn btn-primary col-md-5 mb-1">Download user-mapping.xml</a>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary col-md-6 float-right mb-1">Create a new user-mapping.xml file</a>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h5>File preview:</h5>
+        <p style="font-size: small; line-height: 1.25; font-family: 'Courier New', Courier, monospace;">
+        {% for item in data -%}
+        {{ item|replace(' ','&nbsp;'|safe )}}<br>
+        {%- endfor %}
+        </p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
+
+{% block title %}Guacamole User Mapper{% endblock %}
+
+{% block content %}
+
+    <div class='row'>
+
+        <div class="col-md-5 bg-light ml-3">
+            <form method='POST' enctype="multipart/form-data" class="p-3">
+                {{ render_form(form, button_style="primary", form_type="basic") }}
+            </form>
+        </div>
+
+        <div class="col-md-6 float-right">
+            <div class="ml-3 mt-3">
+                <p>UserMapper builds <a href="https://guacamole.apache.org/" target="_blank">Apache Guacamole remote desktop gateway</a> basic authentication files (user-mapping.xml) for small network emulation labs used by one or more trainers and students. Each user will be given access to the same lab devices.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="row ml-1">
+
+        <div class='col'>
+            <hr />
+            <h5>Instructions:</h5>
+            <p>Upload a YAML configuration file. UserMapper will build a Guacamole basic authentication file based on your configuration. The file name must end with the ".yaml" extension.</p>
+            <p>Create a file similar to the example configuration file listed below. You must have at least one user type and one device type. You may add more user types and device types as necessary. You may also add additional device parameters from the <a href="https://guacamole.apache.org/doc/gug/configuring-guacamole.html" target="_blank">list of Guacamole configuration parameters</a>.</p>
+            <p>The <em>username_suffix</em>, device <em>name_suffix</em>, and device <em>hostname_suffix</em> must be a number with or without leading zeros, enclosed in quotes. We generate names by combining the corresponding name prefix and a different name suffix with a length equal to the length of the suffix string and starting at the number specified in the suffix.</p>
+            <p>If a user type's <em>password</em> is "random", each user will be assigned a unique random password. If you specify a specific user password, each user in the same user type will have the same password.</p>
+            <h5>Example config.yaml file:</h5>
+            <p style="font-size: small; line-height: 1.25; font-family: 'Courier New', Courier, monospace;">
+
+            users:<br />
+            {{('&nbsp;' * 4)|safe}}trainers:<br />
+            {{('&nbsp;' * 8)|safe}}quantity: 2<br />
+            {{('&nbsp;' * 8)|safe}}username_prefix: trainer<br />
+            {{('&nbsp;' * 8)|safe}}username_suffix: '01'<br />
+            {{('&nbsp;' * 8)|safe}}password: random<br /> 
+            {{('&nbsp;' * 4)|safe}}students:<br />
+            {{('&nbsp;' * 8)|safe}}quantity: 10<br />
+            {{('&nbsp;' * 8)|safe}}username_prefix: student<br />
+            {{('&nbsp;' * 8)|safe}}username_suffix: '01'<br />
+            {{('&nbsp;' * 8)|safe}}password: random<br />
+            devices:<br />
+            {{('&nbsp;' * 4)|safe}}servers:<br />
+            {{('&nbsp;' * 8)|safe}}quantity: 4<br />
+            {{('&nbsp;' * 8)|safe}}name_prefix: PC<br />
+            {{('&nbsp;' * 8)|safe}}name_suffix: '09'<br />
+            {{('&nbsp;' * 8)|safe}}hostname_prefix: '10.0.10.'<br />
+            {{('&nbsp;' * 8)|safe}}hostname_suffix: '109'<br />
+            {{('&nbsp;' * 8)|safe}}parameters:<br />
+            {{('&nbsp;' * 12)|safe}}protocol: rdp<br />
+            {{('&nbsp;' * 12)|safe}}hostname: ~<br />
+            {{('&nbsp;' * 12)|safe}}port: 3389<br />
+            {{('&nbsp;' * 12)|safe}}username: root<br />
+            {{('&nbsp;' * 12)|safe}}password: root<br />
+            {{('&nbsp;' * 4)|safe}}routers:<br />
+            {{('&nbsp;' * 8)|safe}}quantity: 4<br />
+            {{('&nbsp;' * 8)|safe}}name_prefix: R<br />
+            {{('&nbsp;' * 8)|safe}}name_suffix: '01'<br />
+            {{('&nbsp;' * 8)|safe}}hostname_prefix: '10.0.10.'<br />
+            {{('&nbsp;' * 8)|safe}}hostname_suffix: '1'<br />
+            {{('&nbsp;' * 8)|safe}}parameters:<br />
+            {{('&nbsp;' * 12)|safe}}protocol: ssh<br />
+            {{('&nbsp;' * 12)|safe}}hostname: ~<br />
+            {{('&nbsp;' * 12)|safe}}port: 22<br />
+            {{('&nbsp;' * 12)|safe}}username: root<br />
+            {{('&nbsp;' * 12)|safe}}password: root<br />
+            </p>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

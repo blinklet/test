@@ -1,0 +1,42 @@
+users:
+
+    trainers:
+        quantity: 1
+        username_prefix: trainer
+        username_suffix: '01'
+        password: random
+        
+    students:
+        quantity: 1
+        username_prefix: student
+        username_suffix: '01'
+        password: random
+
+devices:
+
+    servers:
+        quantity: 1
+        name_prefix: PC
+        name_suffix: '09'
+        hostname_prefix: '10.0.10.'
+        hostname_suffix: '109'
+        parameters:
+            protocol: rdp
+            hostname: ~
+            port: 3389
+            username: root
+            password: root
+            
+    routers:
+        quantity: 1
+        name_prefix: R
+        name_suffix: '01'
+        hostname_prefix: '10.0.10.'
+        hostname_suffix: '1'
+        parameters:
+            protocol: ssh
+            hostname: ~
+            port: 22
+            username: root
+            password: root
+            

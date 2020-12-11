@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Guacamole User Mapper{% endblock %}
+
+{%block content %}
+
+
+<div class="container-fluid">
+    <div class = "row">
+        <div class="col">
+            <div class="card min-vh-100 vh-100">
+                <div class='card=header'>
+                    <nav class="navbar navbar-dark bg-secondary navbar-expand-md">
+                        <a href="{{ url_for('index') }}" class="navbar-brand">UserMapper</a>
+                        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="navbar-item">
+                                    <a href="http://www.brianlinkletter.com" class="nav-link">Network Simulators Blog</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="{{ download_url }}" class="btn btn-primary col-md-5 mb-1">Download user-mapping.xml</a>
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary col-md-5 float-right mb-1">Create a new user-mapping File</a>
+                    </li>
+                </ul>
+
+                <div class="card-body overflow-auto">
+                    <h5 class="card-title">File preview:</h5>
+                    <p class="card-text">
+                    {% for item in data -%}
+                    {{ item|replace(' ','&nbsp;'|safe )}}<br>
+                    {%- endfor %}
+                    </p>
+                </div>
+                <div class="card-footer bg-default">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

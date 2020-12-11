@@ -1,0 +1,6 @@
+wheel
+flask
+Flask-WTF
+bootstrap-flask
+python-dotenv
+git+https://github.com/blinklet/usermapper.git@v0.3#egg=usermapper
