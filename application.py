@@ -72,7 +72,7 @@ def download_page(temp_folder):
     )
 
     with open(filename) as preview:
-       data = preview.read()
+       data = preview.readlines()
     
     download_url = url_for('download', temp_folder=temp_folder)
 

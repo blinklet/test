@@ -23,7 +23,7 @@
         <h5>File preview:</h5>
         <p style="font-size: small; line-height: 1.25; font-family: 'Courier New', Courier, monospace;">
         {% for item in data -%}
-        {{ item|replace(' ','&nbsp;'|safe )}}
+        {{ item|replace(' ','&nbsp;'|safe )}}<br/>
         {%- endfor %}
         </p>
     </div>
