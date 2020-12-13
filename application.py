@@ -20,6 +20,7 @@ load_dotenv(path.join(basedir, '.env'))
 app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 app.config['FLASK_APP'] = environ.get('FLASK_APP')
 app.config['FLASK_ENV'] = environ.get('FLASK_ENV')
+app.config['MAX_CONTENT_LENGTH'] = environ.get['MAX_CONTENT_LENGTH']
 
 class MyForm(FlaskForm):
     filename = FileField('Filename: ', validators=[FileRequired(), FileAllowed(['yaml'])])
